@@ -14,7 +14,6 @@ public class PersonnelDAO extends DAO<Personnel> {
     /**
      * methode de sérialisation d'un objet personnel.
      */
-    @Override
     public void serialize(final Personnel obj, final String file) {
         ObjectOutputStream out = null;
         try {
@@ -34,7 +33,6 @@ public class PersonnelDAO extends DAO<Personnel> {
     /**
      * methode de desérialisation d'un objet personnel.
      */
-    @Override
     public Personnel deserialize(final String file) {
         ObjectInputStream in = null;
         Personnel ret = null;

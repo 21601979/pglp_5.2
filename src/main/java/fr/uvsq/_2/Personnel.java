@@ -163,4 +163,16 @@ final class Personnel  implements Groupe, Serializable {
     public int getID() {
         return iD;
     }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public String getFonctions() {
+        return fonctions;
+    }
 }

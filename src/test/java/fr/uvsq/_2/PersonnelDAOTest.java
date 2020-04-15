@@ -17,7 +17,7 @@ public class PersonnelDAOTest {
         builder b = new builder("taga","da",LocalDate.of(1, 1, 1),1);
         Personnel p = b.build();
         Personnel p2 = null;
-        DAO<Personnel> DAOP = DAOFactory.getPersonnelDAO();
+        PersonnelDAO DAOP = new PersonnelDAO();
         DAOP.serialize(p, "test");
         p2 = DAOP.deserialize("Test");
         assertEquals(p.toString(),p2.toString());

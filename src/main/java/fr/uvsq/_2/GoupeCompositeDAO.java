@@ -14,7 +14,6 @@ public class GoupeCompositeDAO extends DAO<GroupeComposite> {
     /**
      * methode de sérailisation d'un groupe Composite.
      */
-    @Override
     public void serialize(final GroupeComposite obj, final String file) {
         ObjectOutputStream out = null;
         try {
@@ -34,7 +33,6 @@ public class GoupeCompositeDAO extends DAO<GroupeComposite> {
     /**
      * methode de deserialisation d'un groupe composite.
      */
-    @Override
     public GroupeComposite deserialize(final String file) {
         ObjectInputStream in = null;
         GroupeComposite ret = null;

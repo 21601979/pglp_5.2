@@ -22,7 +22,7 @@ public class GroupeCompositeDAOTest {
         g.add(p);
         g.add(g2);
         g2.add(p2);
-        DAO<GroupeComposite> DAOP = DAOFactory.getGroupeCompositeDAO();
+        GoupeCompositeDAO DAOP = new GoupeCompositeDAO();
         DAOP.serialize(g, "test");
         GroupeComposite g3 = DAOP.deserialize("Test");
         assertEquals(g.toString(),g3.toString());

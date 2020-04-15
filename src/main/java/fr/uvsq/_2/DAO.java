@@ -5,19 +5,6 @@ package fr.uvsq._2;
  * @param <T> objet
  */
 public abstract class DAO<T> {
-
-    /**
-     * methode abstraite de serialisation.
-     * @param obj objet a sérialiser
-     * @param file fichier ou serialiser
-     */
-    public abstract void serialize(T obj, String file);
-    /**
-     * methode abstraite pour desérialiser un objet.
-     * @param file fichier d'entré
-     * @return objet désérialisé
-     */
-    public abstract T deserialize(String file);
     /**
      * methode pour sauvegarder un objet.
      * @param obj objet a sauvegarder
