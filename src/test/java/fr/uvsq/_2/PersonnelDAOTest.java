@@ -29,7 +29,7 @@ public class PersonnelDAOTest {
         del.delete();
         builder b = new builder("charl","atant",LocalDate.of(1, 1, 1),1);
         Personnel p = b.build();
-        DAO<Personnel> DAOP = DAOFactory.getPersonnelDAO();
+        DAO<Personnel> DAOP = DAOFactoryserial.getPersonnelDAO();
         DAOP.create(p);
         assertEquals(DAOP.find("1").toString(),p.toString());
     }
@@ -40,7 +40,7 @@ public class PersonnelDAOTest {
         del.delete();
         builder b = new builder("charl","atant",LocalDate.of(1, 1, 1),1);
         Personnel p = b.build();
-        DAO<Personnel> DAOP = DAOFactory.getPersonnelDAO();
+        DAO<Personnel> DAOP = DAOFactoryserial.getPersonnelDAO();
         DAOP.create(p);
         DAOP.delete(p);
         
@@ -53,7 +53,7 @@ public class PersonnelDAOTest {
         del.delete();
         builder b = new builder("charl","atant",LocalDate.of(1, 1, 1),1);
         Personnel p = b.build();
-        DAO<Personnel> DAOP = DAOFactory.getPersonnelDAO();
+        DAO<Personnel> DAOP = DAOFactoryserial.getPersonnelDAO();
         DAOP.create(p);
         builder b2 = new builder("charl","atant",LocalDate.of(10, 10, 10),1);
         Personnel p2 = b2.build();

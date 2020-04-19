@@ -1,21 +1,19 @@
 package fr.uvsq._2;
-/**
- * factory de DAO.
- * @author Tanguy
- */
-public class DAOFactory {
+
+public class DAOFactoryBDD extends AbstractDAOFactory {
     /**
      * methode qui crée un personnel DAO.
      * @return dao de personnel
      */
     public static DAO<Personnel> getPersonnelDAO() {
-        return new PersonnelDAO();
+        return new PersonnelJdbcDAO();
     }
     /**
      * methode qui crée un GoupeComposite DAO.
      * @return dao DE GroupeComposite
      */
     public static DAO<GroupeComposite> getGroupeCompositeDAO() {
-        return new GoupeCompositeDAO();
+        return null;
+        //a modif quand groupecomposite
     }
 }

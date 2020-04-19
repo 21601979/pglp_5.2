@@ -41,7 +41,7 @@ public class GroupeCompositeDAOTest {
         g.add(p);
         g.add(g2);
         g2.add(p2);
-        DAO<GroupeComposite> DAOP = DAOFactory.getGroupeCompositeDAO();
+        DAO<GroupeComposite> DAOP = DAOFactoryserial.getGroupeCompositeDAO();
         DAOP.create(g);
         assertEquals(DAOP.find("1").toString(),g.toString());
     }
@@ -51,7 +51,7 @@ public class GroupeCompositeDAOTest {
         File del = new File("GroupeComposite\\" + 3);
         del.delete();
         GroupeComposite g = new GroupeComposite(3);  
-        DAO<GroupeComposite> DAOP = DAOFactory.getGroupeCompositeDAO();
+        DAO<GroupeComposite> DAOP = DAOFactoryserial.getGroupeCompositeDAO();
         try {
             DAOP.create(g);
         } catch (ExisteDejaException e) {
@@ -67,7 +67,7 @@ public class GroupeCompositeDAOTest {
         File del = new File("GroupeComposite\\" + 3);
         del.delete();
         GroupeComposite g = new GroupeComposite(3);  
-        DAO<GroupeComposite> DAOP = DAOFactory.getGroupeCompositeDAO();
+        DAO<GroupeComposite> DAOP = DAOFactoryserial.getGroupeCompositeDAO();
         try {
             DAOP.create(g);
         } catch (ExisteDejaException e) {

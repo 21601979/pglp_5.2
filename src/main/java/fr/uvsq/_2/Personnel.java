@@ -175,4 +175,12 @@ final class Personnel  implements Groupe, Serializable {
     public String getFonctions() {
         return fonctions;
     }
+
+    public LocalDate getDate() {
+        return dateNaissance;
+    }
+
+    public ArrayList<String> getTelephone() {
+        return telephone;
+    }
 }
