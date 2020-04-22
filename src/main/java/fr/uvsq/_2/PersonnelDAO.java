@@ -13,6 +13,8 @@ import java.io.ObjectOutputStream;
 public class PersonnelDAO extends DAO<Personnel> {
     /**
      * methode de sérialisation d'un objet personnel.
+     * @param obj personnel a sérialiser
+     * @param file fichier ou sera sérialisé le personnel
      */
     public void serialize(final Personnel obj, final String file) {
         ObjectOutputStream out = null;
@@ -32,6 +34,8 @@ public class PersonnelDAO extends DAO<Personnel> {
     }
     /**
      * methode de desérialisation d'un objet personnel.
+     * @param file fichier ou se trouve le personnel
+     * @return personnel désérialiser
      */
     public Personnel deserialize(final String file) {
         ObjectInputStream in = null;

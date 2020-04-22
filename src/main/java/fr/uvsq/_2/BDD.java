@@ -5,8 +5,15 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * class qui gére la création et la supression de la base de données.
+ * @author Tanguy
+ */
 public class BDD {
-    
+
+    /**
+     * creation de la base de données.
+     */
     public static void initBDD() {
         Connection conect = null;
         try {
@@ -28,7 +35,7 @@ public class BDD {
             String groupeTABLE = "CREATE TABLE Groupe("
                     + "ID int,"
                     + "PRIMARY KEY (ID)"
-                    +")";
+                    + ")";
             String contientGroupeTABLE = "CREATE TABLE ContientGroupe("
                     + "IDgroupe int,"
                     + "IDgroupecontenu int,"
@@ -52,25 +59,28 @@ public class BDD {
             } catch (SQLException e) { }
             try {
                 stmt.execute(groupeTABLE);
-            } catch (SQLException e) {e.printStackTrace(); }
+            } catch (SQLException e) { }
             try {
                 stmt.execute(contientGroupeTABLE);
-            } catch (SQLException e) {e.printStackTrace(); }
+            } catch (SQLException e) { }
             try {
                 stmt.execute(contientPersonnelTABLE);
-            } catch (SQLException e) {e.printStackTrace(); }
- 
+            } catch (SQLException e) { }
+
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            if(conect != null) {
+            if (conect != null) {
                 try {
                     conect.close();
                 } catch (SQLException e) { }
             }
         }
     }
-    
+
+    /**
+     * methode qui supprime la base de données.
+     */
     public static void delBDD() {
         Connection conect = null;
         try {
@@ -82,14 +92,14 @@ public class BDD {
                 stmt.execute("DROP TABLE Groupe");
                 stmt.execute("DROP TABLE Telephone");
                 stmt.execute("DROP TABLE Personnel");
-                
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            if(conect != null) {
+            if (conect != null) {
                 try {
                     System.out.println("close");
                     conect.close();

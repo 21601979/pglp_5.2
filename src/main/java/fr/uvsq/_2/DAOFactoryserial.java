@@ -3,7 +3,7 @@ package fr.uvsq._2;
  * factory de DAO.
  * @author Tanguy
  */
-public class DAOFactoryserial extends AbstractDAOFactory{
+public class DAOFactoryserial extends AbstractDAOFactory {
     /**
      * methode qui crée un personnel DAO.
      * @return dao de personnel

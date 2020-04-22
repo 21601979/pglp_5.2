@@ -1,5 +1,9 @@
 package fr.uvsq._2;
 
+/**
+ * classe qui renvoie des jdbcDAO
+ * @author Tanguy
+ */
 public class DAOFactoryJDBC extends AbstractDAOFactory {
     /**
      * methode qui crée un personnel DAO.
