@@ -49,7 +49,7 @@ public class GoupeCompositeDAO extends DAO<GroupeComposite> {
         return ret;
     }
     /**
-     * methode d'aout de la sérialisatioàn d'un objet.
+     * methode d'aout de la sérialisation d'un objet.
      */
     @Override
     public void create(final GroupeComposite obj) throws ExisteDejaException {

@@ -13,22 +13,24 @@ public class main {
        builder b = new builder("bow","ser",LocalDate.of(1, 1, 1),1);
        b.setfonction("roi");
        b.settelephone("11");
-       builder b2 = new builder("bow","ser",LocalDate.of(1, 1, 1),1);
-       b2.setfonction("roi");
-       b2.settelephone("11");
-       b2.settelephone("00");
-       PersonnelJdbcDAO test = new PersonnelJdbcDAO();
+       builder b2 = new builder("pat","ate",LocalDate.of(1, 1, 1),2);
+       b2.setfonction("legume");
+       
+       
+       GroupeComposite g = new GroupeComposite(1);
+       GroupeComposite g2 = new GroupeComposite(2);
+       g2.add(b.build());
+       g.add(b2.build());
+       g.add(g2);
+       
+       DAO<GroupeComposite> d =((DAOFactoryJDBC) AbstractDAOFactory.getFactory(AbstractDAOFactory.DAOtype.JDBC)).getGroupeCompositeDAO();
        try {
-        test.create(b.build());
-        test.update(b2.build());
+        d.create(g);
     } catch (ExisteDejaException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
     }
-       Personnel res = test.find("1");
-       System.out.print(b.toString()+ " " +res);
-       test.find("1");
-       test.delete(b2.build());
+       System.out.println("."+d.find("1").toString());
     }
 }
 
