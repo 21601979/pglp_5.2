@@ -12,10 +12,11 @@ import fr.uvsq._2.Personnel.builder;
 /**
  * DAO qui gère les personnel dans la base de données.
  * @author Tanguy
- *
  */
 public class PersonnelJdbcDAO extends DAO<Personnel> {
-
+    /**
+     * methode create pour un personel dans la base de données.
+     */
     @Override
     public void create(final Personnel obj) throws ExisteDejaException {
         Connection conect = null;
@@ -28,10 +29,13 @@ public class PersonnelJdbcDAO extends DAO<Personnel> {
                 PreparedStatement prep = conect.prepareStatement(addPersonnel);
                 prep.setInt(1, obj.getID());
                 prep.setString(2, obj.getNom());
-                prep.setString(3, obj.getPrenom());
-                prep.setString(4, obj.getFonctions());
+                final int quatre = 4;
+                final int trois = 3;
+                prep.setString(trois, obj.getPrenom());
+                prep.setString(quatre, obj.getFonctions());
                 Date d = Date.valueOf(obj.getDate());
-                prep.setDate(5, d);
+                final int cinq = 5;
+                prep.setDate(cinq, d);
                 int result = prep.executeUpdate();
                 assert result == 1;
                 for (int i = 0; i < obj.getTelephone().size(); i++) {
@@ -109,6 +113,9 @@ public class PersonnelJdbcDAO extends DAO<Personnel> {
         }
     }
 
+    /**
+     * methode find pour un personnel dans la base de données.
+     */
     @Override
     public Personnel find(final String iD) {
         Connection conect = null;
@@ -147,6 +154,9 @@ public class PersonnelJdbcDAO extends DAO<Personnel> {
         return null;
     }
 
+    /**
+     * methode delete pour un personnel dans la base de données.
+     */
     @Override
     public void delete(final Personnel obj) {
         Connection conect = null;
@@ -176,7 +186,9 @@ public class PersonnelJdbcDAO extends DAO<Personnel> {
             }
         }
     }
-
+    /**
+     * methode update pour un personnel dans la base de données.
+     */
     @Override
     public Personnel update(final Personnel obj) {
         Personnel test = find(obj.getID() + "");

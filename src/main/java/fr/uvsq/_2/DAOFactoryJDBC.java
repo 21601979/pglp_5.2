@@ -1,7 +1,7 @@
 package fr.uvsq._2;
 
 /**
- * classe qui renvoie des jdbcDAO
+ * classe qui renvoie des jdbcDAO.
  * @author Tanguy
  */
 public class DAOFactoryJDBC extends AbstractDAOFactory {

@@ -163,23 +163,38 @@ final class Personnel  implements Groupe, Serializable {
     public int getID() {
         return iD;
     }
-
+    /**
+     * methode qui retourne le nom d'un personnel.
+     * @return nom d'un personnel
+     */
     public String getNom() {
         return nom;
     }
-
+    /**
+     * methode qui renvoi le prenom d'un personel.
+     * @return prenom du personel
+     */
     public String getPrenom() {
         return prenom;
     }
-
+    /**
+     * methode qui retourne les fonctions d'un personnel .
+     * @return fonctions : fonction d'un personel
+     */
     public String getFonctions() {
         return fonctions;
     }
-
+    /**
+     * methode qui retourne la date de naissance d'un personnel .
+     * @return dateNaissance date de naissance
+     */
     public LocalDate getDate() {
         return dateNaissance;
     }
-
+    /**
+     * methode qui retourne la liste des telephone d'un personnel.
+     * @return telephone liste de téléphone
+     */
     public ArrayList<String> getTelephone() {
         return telephone;
     }

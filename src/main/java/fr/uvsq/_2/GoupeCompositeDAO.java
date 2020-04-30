@@ -35,7 +35,7 @@ public class GoupeCompositeDAO extends DAO<GroupeComposite> {
     /**
      * methode de deserialisation d'un groupe composite.
      * @param file fichier ou se touve le groupecomposite a déserialiser
-     * @return groupe composite désérialiser 
+     * @return groupe composite désérialiser
      */
     public GroupeComposite deserialize(final String file) {
         ObjectInputStream in = null;

@@ -13,6 +13,9 @@ import java.util.Iterator;
  */
 public class GroupeCompositejdbcDAO extends DAO<GroupeComposite> {
 
+    /**
+     * methode qui crée un groupe composite dans la base de données.
+     */
     @Override
     public void create(final GroupeComposite obj) throws ExisteDejaException {
         Connection conect = null;
@@ -61,7 +64,6 @@ public class GroupeCompositejdbcDAO extends DAO<GroupeComposite> {
             assert result == 1;
 
         } catch (Exception e) {
-            //delete(obj);
             e.printStackTrace();
             throw new ExisteDejaException();
         } finally {
@@ -73,6 +75,9 @@ public class GroupeCompositejdbcDAO extends DAO<GroupeComposite> {
         }
     }
 
+    /**
+     * methode qui trouve un groupe composite dans la base de données.
+     */
     @Override
     public GroupeComposite find(final String iD) {
         Connection conect = null;
@@ -124,12 +129,79 @@ public class GroupeCompositejdbcDAO extends DAO<GroupeComposite> {
         return null;
     }
 
+    /**
+     * methode qui suprimme un groupe composite de la base de données.
+     */
     @Override
     public void delete(final GroupeComposite obj) {
-        // TODO Auto-generated method stub
+        Connection conect = null;
+        try {
+            String findGroupe =
+                    "SELECT * FROM Groupe WHERE ID = ?";
+            String findcontgroupe =
+                    "SELECT * FROM ContientGroupe WHERE IDgroupe = ? ";
+            String findcontperos =
+                    "SELECT * FROM ContientPersonnel WHERE IDgroupe = ?";
+            String dellgroupe =
+                    "DELETE FROM Groupe WHERE ID = ?";
+            String dellcontgroupe =
+                    "DELETE FROM ContientGroupe WHERE IDgroupe = ? "
+                    + "AND IDgroupecontenu = ?";
+            String dellcontperos =
+                    "DELETE FROM ContientPersonnel WHERE IDgroupe = ? "
+                    + "AND IDpersonnel = ?";
+
+            conect = DriverManager.getConnection("jdbc:derby:BDD;create=true");
+            PreparedStatement prep =
+                    conect.prepareStatement(findGroupe);
+            PreparedStatement prepgroupe =
+                    conect.prepareStatement(findcontgroupe);
+            PreparedStatement prepperos =
+                    conect.prepareStatement(findcontperos);
+            PreparedStatement prepdell =
+                    conect.prepareStatement(dellgroupe);
+            PreparedStatement prepdellcontgroupe =
+                    conect.prepareStatement(dellcontgroupe);
+            PreparedStatement prepdellcontperos =
+                    conect.prepareStatement(dellcontperos);
+
+            GroupeCompositejdbcDAO del = new GroupeCompositejdbcDAO();
+            PersonnelJdbcDAO delperso = new PersonnelJdbcDAO();
+
+            prep.setInt(1, obj.getID());
+            prepgroupe.setInt(1, obj.getID());
+            prepperos.setInt(1, obj.getID());
+            prepdell.setInt(1, obj.getID());
+            prepdellcontgroupe.setInt(1, obj.getID());
+            prepdellcontperos.setInt(1, obj.getID());
+
+            ResultSet result = prepgroupe.executeQuery();
+            while (result.next()) {
+                prepdellcontgroupe.setInt(2, result.getInt("IDgroupecontenu"));
+                prepdellcontgroupe.executeUpdate();
+                del.delete(del.find(result.getInt("IDgroupecontenu") + ""));
+            }
+            result = prepperos.executeQuery();
+            while (result.next()) {
+                prepdellcontgroupe.setInt(2, result.getInt("IDpersonnel"));
+                prepdellcontgroupe.executeUpdate();
+            }
+            result = prep.executeQuery();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } finally {
+            if (conect != null) {
+                try {
+                    conect.close();
+                } catch (SQLException e) { }
+            }
+        }
 
     }
-
+    /**
+     * methode qui update un groupe composite.
+     */
     @Override
     public GroupeComposite update(final GroupeComposite obj) {
         // TODO Auto-generated method stub
